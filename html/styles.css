@@ -1,0 +1,342 @@
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --cell-size: 175px;
+  --mark-size: calc(var(--cell-size) * .9);
+}
+
+body {
+  background-color:rgb(34,48,60);
+  width: 100%;
+  height: auto;
+  margin: 0;
+  text-align: center;
+  font-family: 'Open Sans';
+}
+
+#name {
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px; 
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+#token {
+  height: 34px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #555;
+  background-color: #fff;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+  transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+button {
+  text-rendering: auto;
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-indent: 0px;
+  text-shadow: none;
+  align-items: flex-start;
+  overflow: visible;
+  color: #333;
+  background-color: #fff;
+  border-color: #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.42857143;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  cursor: pointer;
+  user-select: none;
+  background-image: none;
+  border: 1px solid transparent;
+  border-radius: 4px;
+}
+.header {
+  width: 100%;
+  height: 100px;
+  background-color:	rgb(21,32,43);
+}
+
+.headerText {
+  font-size: 60px;
+  color: rgb(136,153,172);
+  position: relative;
+  top: 13%;
+}
+
+.root {
+  display: block;
+  width: 800px;
+  height: 100%;
+  text-align: left;
+  margin-top: auto;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: #eeeeee;
+}
+
+.root > .top {
+  width: 100%;
+  height: 15%;
+  padding: 3px;
+  box-sizing: border-box;
+  border: 3px solid #d6d6d6;  
+}
+.nameText {
+  display: inline-block;
+  margin-top: 25px;
+  margin-left: 30px;
+  font-family: 'Open Sans';
+  font-size: 21px;
+}
+
+.tokenBlock {
+  display: inline-block;
+}
+.tokenText {
+  display: inline-block;
+  margin-top: 10px;
+  margin-left: 30px;
+
+  font-family: 'Open Sans';
+  font-size: 21px;
+}
+.root > .bottom {
+  width: 100%;
+  height: 60%;
+  padding: 3px;
+  box-sizing: border-box;
+  justify-content: center;  
+  border: 3px solid #d6d6d6;  
+}
+
+.root > .middle {
+  width: 100%;
+  height: 10%;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  font-size: 50px;
+  border: 3px solid #d6d6d6;  
+}
+
+.scoreBoard {
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Regular', sans-serif;
+  font-size: 40px;
+  display: flex;
+  box-sizing: border-box;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.scoreBoard .middle img {
+  width: 64px;
+  height: 60%;
+}
+.scoreBoard .middle .drawsScore {
+  font-size: 24px;
+  height: 40%;
+  text-align: center;
+  border: 2px solid rgb(107, 107, 107);
+  background-color: rgb(185, 185, 185);
+}
+
+.me {
+  width: 200px;
+  display: inline-block;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.enemy {
+  width: 200px;
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: right;
+}
+
+.myScore, .enemyScore{
+  display: flex;
+  height: 100%;
+  width: 64px;
+  align-items:center; /*for vertically center*/
+  justify-content:center; /*for horizontally center*/
+}
+
+.myName {
+  padding-right: 30px;
+}
+.opponentName {
+  padding-right: 30px;
+}
+
+.myScore {
+  justify-self: left;
+  border: 2px rgb(107, 107, 107) solid;
+  background-color: rgb(85, 109, 216);
+}
+
+.enemyScore {
+  justify-self: right;
+  border: 2px rgb(107, 107, 107) solid;
+  background-color: rgb(216, 85, 85);
+}
+
+.boardContainer {
+  padding-top: 140px;
+}
+
+.board {
+  width: 300px;
+  height: 300px;
+  display: grid;
+  margin: auto;
+  justify-content: center;
+  align-content: center;
+  justify-items: center;
+  align-items: center;
+  grid-template-columns: repeat(3, auto)
+}
+
+.cell {
+  width: var(--cell-size);
+  height: var(--cell-size);
+  border: 1px solid rgb(23,37,42);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+.cell:nth-child(3n + 1) {
+  border-left: none;
+}
+
+.cell:nth-child(3n + 3) {
+  border-right: none;
+}
+
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+  border-bottom: none;
+}
+
+.cell.X,
+.cell.O {
+  cursor: not-allowed;
+}
+
+.cell.X::before,
+.cell.X::after,
+.cell.O::before {
+  background-color: black;
+}
+
+.board.X .cell:not(.X):not(.O):hover::before,
+.board.X .cell:not(.X):not(.O):hover::after,
+.board.O .cell:not(.X):not(.O):hover::before {
+  background-color: rgb(23,37,42);
+}
+
+.cell.X::before,
+.cell.X::after,
+.board.X .cell:not(.X):not(.O):hover::before,
+.board.X .cell:not(.X):not(.O):hover::after {
+  content: '';
+  position: absolute;
+  width: calc(var(--mark-size) * .15);
+  height: var(--mark-size);
+}
+
+.cell.X::before,
+.board.X .cell:not(.X):not(.O):hover::before {
+  transform: rotate(45deg);
+}
+
+.cell.X::after,
+.board.X .cell:not(.X):not(.O):hover::after {
+  transform: rotate(-45deg);
+}
+
+.cell.O::before,
+.cell.O::after,
+.board.O .cell:not(.X):not(.O):hover::before,
+.board.O .cell:not(.X):not(.O):hover::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+
+.cell.O::before,
+.board.O .cell:not(.X):not(.O):hover::before {
+  width: var(--mark-size);
+  height: var(--mark-size);
+}
+
+.cell.O::after,
+.board.O .cell:not(.X):not(.O):hover::after {
+  width: calc(var(--mark-size) * .7);
+  height: calc(var(--mark-size) * .7);
+  background-color: white;
+}
+
+.winning-message {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, .9);
+  justify-content: center;
+  align-items: center;
+  color:#eeeeee;
+  font-size: 5rem;
+  flex-direction: column;
+}
+
+.winning-message button {
+  font-size: 3rem;
+  background-color: white;
+  border: 1px solid black;
+  padding: .25em .5em;
+  cursor: pointer;
+}
+
+.winning-message button:hover {
+  background-color: black;
+  color: white;
+  border-color: white;
+}
+
+.winning-message.show {
+  display: flex;
+}

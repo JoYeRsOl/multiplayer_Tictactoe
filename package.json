@@ -1,0 +1,14 @@
+{
+  "name": "tictactoe",
+  "version": "1.0.0",
+  "description": "sit",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index"
+  },
+  "author": "joyersol",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^7.4.1"
+  }
+}
